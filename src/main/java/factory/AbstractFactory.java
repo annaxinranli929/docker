@@ -12,7 +12,9 @@ public abstract class AbstractFactory<T extends Bean> {
         Properties prop = new Properties();
         AbstractFactory factory = null;
         try {
-            prop.load(new FileInputStream("C:/webapps/NEOcinema/factory.properties"));
+            prop.load(AbstractFactory.class
+                .getClassLoader()
+                .getResourceAsStream("factory.properties"));
             String className = prop.getProperty(key);
             Class<?> c = Class.forName(className);
             factory = (AbstractFactory) c.getDeclaredConstructor().newInstance();
