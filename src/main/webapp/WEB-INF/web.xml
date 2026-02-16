@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app>
+    <context-param>
+        <param-name>TMDB_BEARER</param-name>
+        <param-value>eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMzdkNmNkY2JmN2M1ZjljYmMyMDRmMGQ4MmMzOTQ1YSIsIm5iZiI6MTc2NTk0OTkyMy4wNjIsInN1YiI6IjY5NDI0MWUzZjY0N2VhMWNkYzdhMmEwOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Z5W9pdCPgXbp9gZOnenCcDAdEUdn3S6H-W3hNgWDTb8</param-value>
+    </context-param>
+    
+    <welcome-file-list>
+        <welcome-file>/WEB-INF/jsp/start.jsp</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>frontServlet</servlet-name>
+        <servlet-class>logic.FrontServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>frontServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>AuthenticateFilter</filter-name>
+        <filter-class>filter.AuthenticateFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AuthenticateFilter</filter-name>
+        <url-pattern>/seat</url-pattern>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>AuthenticateFilter</filter-name>
+        <url-pattern>/myPage</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>AuthenticateFilter</filter-name>
+        <url-pattern>/showBookingConfirm</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>AuthenticateFilter</filter-name>
+        <url-pattern>/booking</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+
+</web-app>

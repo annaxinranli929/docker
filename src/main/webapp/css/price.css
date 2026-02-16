@@ -1,0 +1,90 @@
+/* --- 料金案内テーブルのラッパー --- */
+.price-table-wrapper {
+    max-width: 850px; /* 少し広げてゆとりを持たせる */
+    margin: 0 auto;
+    background: #1e1e1e;
+    border-radius: 8px;
+    border: 1px solid #333;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* --- テーブル本体 --- */
+.price-display-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+/* --- ヘッダー（thead） --- */
+.price-display-table thead {
+    background: #2a2a2a;
+}
+
+.price-display-table th {
+    /* 左右のパディングを増やして端から離す */
+    padding: 18px 40px; 
+    color: #00d4ff;
+    text-align: left;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    border-bottom: 2px solid #333;
+}
+
+.price-display-table th:last-child {
+    text-align: right;
+}
+
+/* --- 行とセルのスタイル --- */
+.price-display-table tr {
+    border-bottom: 1px solid #333;
+    /* hoverプロパティを削除しました */
+}
+
+.price-display-table tr:last-child {
+    border-bottom: none;
+}
+
+/* 縞々模様（視認性のため維持、不要なら削除してください） */
+.price-display-table tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.price-display-table td {
+    /* 上下パディングを広げ、左右を40pxにして端から離しました */
+    padding: 25px 40px; 
+    vertical-align: middle;
+}
+
+/* --- 各列の個別スタイル --- */
+
+.category-name {
+    text-align: left;
+    width: 60%;
+    font-size: 1.05rem;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.price-amount {
+    text-align: right;
+    width: 40%;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #00d4ff;
+    font-family: 'Verdana', sans-serif;
+}
+
+/* --- スマホ対応 --- */
+@media screen and (max-width: 600px) {
+    .price-display-table td, 
+    .price-display-table th {
+        /* スマホでは少し余白を絞る */
+        padding: 15px 20px;
+    }
+    .price-amount, 
+    .category-name {
+        font-size: 0.85rem;
+    }
+}
+

@@ -1,0 +1,212 @@
+/* ==========================================================================
+   件数表示
+   ========================================================================== */
+.result-count {
+    color: #888;
+    font-size: 0.9rem;
+    /* page-titleの下マージンを考慮して配置 */
+    margin: -15px 0 30px 15px; 
+    font-family: 'Verdana', sans-serif;
+}
+
+/* ==========================================================================
+   映画リスト（グリッド）
+   ========================================================================== */
+.movie-list-grid {
+    display: grid;
+    /* 1列あたり最小480px、最大1frでレスポンシブに並べる */
+    grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+/* ==========================================================================
+   映画カード
+   ========================================================================== */
+.movie-card {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    height: 180px; /* 高さをニュースカードと揃えて統一感を出す */
+}
+
+.movie-card:hover {
+    border-color: #00d4ff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* 全面リンク：hover効果を邪魔しないよう配置 */
+.card-overlay-link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    text-indent: -9999px;
+}
+
+/* ポスター画像 */
+.poster-wrapper {
+    width: 130px;
+    height: 100%;
+    flex-shrink: 0;
+    background-color: #000;
+}
+
+.poster-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 映画情報 */
+.movie-info {
+    padding: 15px 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+}
+
+/* タイトルと評価 */
+.movie-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.movie-name {
+    font-size: 1.1rem;
+    color: #00d4ff;
+    margin: 0;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movie-rating {
+    color: #ffcc00;
+    font-weight: bold;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+/* ジャンルタグ */
+.genre-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+    position: relative;
+    z-index: 2; /* リンクの上に乗せてクリック可能にする */
+}
+
+.genre-tag {
+    background-color: #333;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+}
+
+.genre-tag a {
+    color: #ccc;
+    text-decoration: none;
+    display: block;
+}
+
+.genre-tag:hover {
+    background-color: #444;
+}
+
+.genre-tag:hover a {
+    color: #00d4ff;
+}
+
+/* 上映ステータス */
+.status-badge {
+    font-size: 0.65rem;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.status-badge.active {
+    background-color: #00d4ff;
+    color: #000;
+}
+
+.status-badge.inactive {
+    background-color: #444;
+    color: #aaa;
+}
+
+/* 右下のヒント */
+.movie-action-hint {
+    text-align: right;
+    font-size: 0.75rem;
+    color: #555;
+}
+
+/* ==========================================================================
+   検索結果なし
+   ========================================================================== */
+.no-result {
+    text-align: center;
+    padding: 80px 0;
+    background: #1e1e1e;
+    border-radius: 8px;
+    border: 1px solid #333;
+    color: #888;
+}
+
+.btn-back {
+    display: inline-block;
+    margin-top: 20px;
+    color: #00d4ff;
+    text-decoration: none;
+    border: 1px solid #00d4ff;
+    padding: 8px 24px;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.btn-back:hover {
+    background: rgba(0, 212, 255, 0.1);
+}
+
+/* ==========================================================================
+   スマホ対応
+   ========================================================================== */
+@media (max-width: 600px) {
+    .movie-list-grid {
+        grid-template-columns: 1fr;
+    }
+    .movie-card {
+        height: 150px;
+    }
+
+    .movie-info {
+        padding: 10px 15px;
+    }
+    .status-badge {
+        font-size: 0.6rem;
+        padding: 2px 6px;
+    }
+    .genre-tag a {
+        font-size: 0.5rem;
+    }
+    .poster-wrapper {
+        width: 100px;
+    }
+    .result-count {
+        margin: -10px 0 20px 10px;
+    }
+}

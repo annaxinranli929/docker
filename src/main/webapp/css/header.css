@@ -1,0 +1,442 @@
+/* ヘッダー全体 */
+.neocinema-header-main {
+    background-color: #1a1a1b;
+    color: #ffffff;
+    padding: 0 2%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    font-family: sans-serif;
+}
+
+.neocinema-header-logo h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.neocinema-header-logo a {
+    color: #00d4ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.neocinema-header-search-wrap {
+    flex: 1;
+    max-width: 55%;
+    margin: 0 3%;
+    display: flex;
+    align-items: center;
+}
+
+.neocinema-header-search-wrap span {
+    font-size: 0.8rem;
+    margin-right: 10px;
+    color: #ccc;
+    white-space: nowrap;
+}
+
+/* 検索フォームのベース */
+.neocinema-header-search-form {
+    display: flex;
+    width: 100%;
+    background: #333;
+    border-radius: 4px;
+    overflow: visible;
+    height: 40px;
+    border: 1px solid #444;
+    position: relative;
+}
+
+/* select要素共通 */
+.neocinema-header-search-form select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #444;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    height: 100%;
+    line-height: 40px;
+    padding: 0 15px;
+    background-image: linear-gradient(45deg, transparent 50%, #888 50%), linear-gradient(135deg, #888 50%, transparent 50%);
+    background-position: calc(100% - 20px) 18px, calc(100% - 15px) 18px;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+}
+
+/* ジャンルリスト展開時のスタイル調整 */
+.neocinema-header-category-genre[size] {
+    position: absolute;
+    top: 0;
+    left: 120px;
+    width: calc(100% - 120px - 80px) !important;
+    height: auto !important;
+    max-height: 250px;
+    z-index: 1000;
+    border: 2px solid #00d4ff;
+    background-image: none !important;
+    background-color: #222 !important;
+    padding: 0;
+    overflow-y: auto;
+    border-radius: 0 0 4px 4px;
+}
+
+#neocinema-header-search-category {
+    width: 120px;
+    flex-shrink: 0;
+    border-right: 1px solid #555;
+    padding-right: 30px;
+    border-radius: 2px 0 0 2px;
+}
+
+.neocinema-header-category-genre {
+    flex: 1;
+    padding-right: 35px;
+}
+
+.neocinema-header-search-form select option {
+    background-color: #222;
+    color: #ffffff;
+    padding: 10px 15px;
+}
+
+.neocinema-header-search-form select option:hover {
+    background-color: #444;
+}
+
+.neocinema-header-category-movieName, 
+.neocinema-header-category-summary {
+    flex: 1;
+    background: transparent !important;
+    border: none;
+    color: white;
+    padding: 0 15px;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+/* 検索ボタン */
+#neocinema-header-search-submit {
+    height: 100%;
+    background-color: #00d4ff;
+    color: #000;
+    border: none;
+    width: 80px;
+    flex-shrink: 0;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 0 3px 3px 0;
+    z-index: 1;
+}
+
+#neocinema-header-search-submit:disabled {
+    background-color: #555;
+    color: #888;
+    cursor: not-allowed;
+}
+
+.neocinema-header-nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* ナビゲーションリンクの基本スタイル */
+.neocinema-header-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+/* ナビゲーションリンクのhover演出 */
+.neocinema-header-nav a:not(.neocinema-header-btn-register):hover {
+    color: #00d4ff;
+}
+
+/* 新規登録ボタンのhover */
+.neocinema-header-btn-register {
+    border: 1px solid #00d4ff;
+    padding: 5px 12px;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+}
+
+.neocinema-header-btn-register:hover {
+    background-color: #00d4ff;
+    color: #000 !important;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.neocinema-header-open-window {
+    display: none;
+}
+
+.phone {
+    display: none;
+}
+
+
+/* ==========================================================================
+   レスポンシブ対応 (Media Queries)
+   ========================================================================== */
+
+@media (max-width: 900px) {
+
+    body {
+        padding-top: 60px !important;
+    }
+
+    .phone {
+        display: inline-block;
+    }
+
+    /* 2. ヘッダー本体：最前面に固定 */
+    .neocinema-header-main {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        z-index: 1000; /* ボタン操作を最優先 */
+        background-color: #1a1a1b;
+        display: block; 
+        padding: 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ヘッダー上部（ロゴ・3点リーダー） */
+    .neocinema-header-tops {
+        background-color: #1a1a1b;
+        width: 100%;
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 1000;
+    }
+
+    .neocinema-header-menu {
+        margin-left: 5px;
+        width: 5px;
+        height: 5px;
+        background-color: #999;
+        border-radius: 50%;
+        box-shadow: 10px 0 0 #999, -10px 0 0 #999;
+        cursor: pointer;
+        position: relative;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .neocinema-header-menu::before {
+        content: "";
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        right: -15px;
+        bottom: -15px;
+        z-index: 1001;
+    }
+
+    .neocinema-header-logo {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+    }
+
+    .dummy {
+        margin-right: 5px;
+    }
+
+    .neocinema-header-search-wrap {
+        max-width: 100%;
+    }
+
+    /* 3. オーバーレイ：背景を暗くぼかす */
+    #neocinema-header-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(8px); /* 高級感のあるぼかし */
+        -webkit-backdrop-filter: blur(8px);
+        z-index: 998;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    #neocinema-header-overlay.neocinema-header-open {
+        display: block;
+        opacity: 1;
+    }
+
+    /* 4. スライドパネル設定（検索窓とナビ共通） */
+    .neocinema-header-search-wrap.neocinema-header-hidden,
+    .neocinema-header-nav.neocinema-header-hidden {
+        position: fixed;
+        left: 0;
+        width: 300px; /* パネルの横幅 */
+        /*background-color: #1a1a1b;*/
+        background-color: rgba(26, 26, 27, 0.7);
+        z-index: 999;
+        margin: 0 !important; /* 余計なマージンを排除 */
+        
+        /* 画面外へ追い出す（影も隠れるように-110%） */
+        transform: translateX(-110%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        
+        /* display:noneを上書き */
+        display: block !important; 
+        box-sizing: border-box;
+    }
+
+    /* 開いた時のアニメーション（!importantで確実に実行） */
+    .neocinema-header-search-wrap.neocinema-header-open,
+    .neocinema-header-nav.neocinema-header-open {
+        transform: translateX(0) !important;
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    /* 5. 検索ボックスの救出と配置調整 */
+    .neocinema-header-search-wrap.neocinema-header-hidden {
+        top: 60px;
+        padding: 25px 15px !important;
+        height: 140px !important;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .neocinema-header-search-form {
+        display: flex !important;
+        width: 100% !important;
+        max-width: 100%;
+        height: 40px;
+        margin: 0;
+        z-index: 1000;
+    }
+
+    /* ジャンルリスト展開時のスタイル調整 */
+    .neocinema-header-category-genre[size] {
+        position: absolute;
+        top: 0;
+        left: 70px;
+        width: calc(100% - 70px - 50px) !important;
+        height: auto !important;
+        max-height: 250px;
+        z-index: 1010;
+        border: 2px solid #00d4ff;
+        background-image: none !important;
+        background-color: #222 !important;
+        padding: 0;
+        overflow-y: auto;
+        border-radius: 0 0 4px 4px;
+    }
+
+    /* 入力欄がパネルを突き破らないように可変にする */
+    .neocinema-header-category-movieName, 
+    .neocinema-header-category-summary {
+        flex: 1 !important;
+        width: 10px !important; /* 最小幅を極限まで下げてflexに任せる */
+        min-width: 0;
+    }
+
+    #neocinema-header-search-category {
+        width: 70px;
+        padding: 0 4px;
+        font-size: 0.8rem;
+        
+    }
+
+    .neocinema-header-search-form select {
+        background-size: 4px 4px, 4px 4px;
+        background-position: calc(100% - 7.8px) 18px, calc(100% - 4px) 18px;
+    }
+
+    #neocinema-header-search-submit {
+        width: 50px;
+    }
+
+    /* 6. ナビゲーションの配置調整 */
+    .neocinema-header-nav.neocinema-header-hidden {
+        top: 200px; /* 検索窓の下にぴったり付ける */
+        height: calc(100vh - 200px);
+        margin: 0;
+        border-top: 1px solid #333;
+        overflow-y: auto;
+    }
+
+    /* ナビ内のリンク：アイコンを右側に配置 */
+    .neocinema-header-nav a ,
+    .neocinema-header-btn-register {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 25px;
+        width: 100%;
+        box-sizing: border-box;
+        color: #eee;
+        text-decoration: none;
+        font-size: 0.95rem;
+        border: none;
+        border-bottom: 1px solid #252526;
+    }
+
+    .neocinema-header-btn-register:hover {
+        color: #00d4ff !important;
+    }
+
+    .neocinema-header-search-mess {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 25px;
+        width: 100%;
+        box-sizing: border-box;
+        color: #eee;
+        text-decoration: none;
+        font-size: 0.95rem;
+        border: none;
+        margin: 0;
+    }
+
+    .neocinema-header-nav a:hover {
+        background-color: #252526;
+        color: #00d4ff;
+    }
+
+    /* アイコンのスタイル */
+    .phone.icon {
+        display: inline-block !important;
+        font-size: 1.1rem;
+        color: #00d4ff;
+    }
+
+    /* 新規登録・ログインボタンのスタイル上書き */
+    .neocinema-header-btn-register {
+        border-radius: 0 !important;
+        margin: 0 !important;
+    }
+
+    .neocinema-header-nav-close-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+}

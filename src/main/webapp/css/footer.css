@@ -1,0 +1,129 @@
+/* フッター全体 */
+.neocinema-footer-main {
+    background-color: #1a1a1b;
+    color: #ffffff;
+    padding: 20px 20px 40px 20px;
+    font-family: sans-serif;
+    border-top: 1px solid #333;
+    margin-top: 50px;
+}
+
+.neocinema-footer-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 上段：ロゴとSNS */
+.neocinema-footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.neocinema-footer-logo a {
+    color: #00d4ff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.neocinema-footer-sns {
+    display: flex;
+    gap: 20px;
+}
+
+.neocinema-footer-sns a {
+    color: #ccc;
+    font-size: 1.25rem;
+    transition: color 0.2s ease;
+}
+
+.neocinema-footer-sns a:hover {
+    color: #00d4ff;
+}
+
+/* 区切り線 */
+.neocinema-footer-divider {
+    border: 0;
+    border-top: 1px solid #333;
+    margin-bottom: 10px;
+}
+
+/* 中段：リンク集（2カラム調整） */
+.neocinema-footer-links {
+    display: flex;
+    justify-content: space-around; /* 2つの項目を均等に配置 */
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+.neocinema-footer-nav-group ul a:hover {
+    color: #00d4ff;
+}
+
+
+.neocinema-footer-nav-group {
+    flex: 0 1 auto; /* 広がりすぎないように固定気味に */
+    text-align: center; /* 2項目なので中央寄せがバランス良い */
+}
+
+.neocinema-footer-nav-group h4 {
+    color: #00d4ff;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    /* 2項目のときは下線デザインの方が収まりが良いです */
+    border-bottom: 1px solid #00d4ff;
+    display: inline-block;
+    padding: 0 10px 5px;
+}
+
+.neocinema-footer-nav-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+}
+
+.neocinema-footer-nav-group li {
+    margin-bottom: 12px;
+}
+
+.neocinema-footer-nav-group a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.neocinema-footer-nav-group a:hover {
+    color: #fff;
+}
+
+/* 下段：コピーライト */
+.neocinema-footer-bottom {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #666;
+    padding-top: 20px;
+    border-top: 1px solid #252526;
+}
+
+.neocinema-footer-str {
+    margin: 0;
+}
+
+/* ==========================================================================
+   レスポンシブ対応 (Media Queries)
+   ========================================================================== */
+@media (max-width: 600px) {
+    .neocinema-footer-top {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .neocinema-footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}

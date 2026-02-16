@@ -1,0 +1,347 @@
+/* ===== フォーム外枠 ===== */
+.info-list {
+    background-color: #252525;
+    border: 1px solid #333;
+    border-radius: 12px;
+    max-width: 900px;
+    margin: 0 auto 30px;
+    padding: 10px 20px;
+}
+
+/* ===== テーブル ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+tr {
+    border-bottom: 1px solid #333;
+}
+
+tr:last-child {
+    border-bottom: none;
+}
+
+th {
+    width: 30%;
+    padding: 18px 20px;
+    text-align: left;
+    color: #aaa;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+td {
+    width: 70%;
+    padding: 18px 20px;
+}
+
+/* ===== 入力欄 ===== */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;    /* 上下左右の余白 */
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    height: auto;          /* 高さは自動にしてpaddingで調整 */
+    line-height: 1.3;      /* 文字行間で文字位置調整 */
+}
+
+
+input:focus {
+    outline: none;
+    border-color: #00d4ff;
+}
+
+/* ===== パスワードトグル ===== */
+.password-cell {
+    position: relative;
+}
+
+.toggle-btn {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #aaa;
+}
+
+/* ===== ボタン ===== */
+.button-area {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 25px;
+}
+
+.btn {
+    background: transparent;
+    color: #00d4ff;
+    border: 1px solid #00d4ff;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #00d4ff;
+    color: #000;
+}
+
+/* ===== モーダル ===== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.6);
+    z-index: 9998;
+    display: none;
+}
+
+.modal-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(.9);
+    width: 480px;
+    max-width: 92%;
+    background: #252525;
+    border: 1px solid #333;
+    border-radius: 14px;
+    z-index: 9999;
+    display: none;
+    animation: modalPop .35s ease forwards;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #333;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.close-btn {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #aaa;
+}
+
+.close-btn:hover {
+    color: #00d4ff;
+}
+
+.modal-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.modal-table th {
+    width: 35%;
+    padding: 14px 18px;
+    color: #aaa;
+    text-align: left;
+    font-size: .9rem;
+}
+
+.modal-table td {
+    width: 65%;
+    padding: 14px 18px;
+}
+
+.modal-table input {
+    width: 100%;
+    height: 42px;
+    background: #1e1e1e;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 0 14px;
+    font-size: .95rem;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.modal-table input:focus {
+    outline: none;
+    border-color: #00d4ff;
+}
+
+.expire-cvv {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.expire-cvv input {
+    flex: 1 1 60px;
+    min-width: 60px;
+    text-align: center;
+}
+
+.expire-cvv input:last-child {
+    flex: 1 1 80px;
+    min-width: 80px;
+}
+
+.slash {
+    color: #aaa;
+}
+
+.modal-btn-area {
+    padding: 18px;
+    text-align: center;
+    border-top: 1px solid #333;
+}
+
+@keyframes modalPop {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(.85); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* ===== スマホレスポンシブ ===== */
+@media (max-width: 600px) {
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        padding: 12px 14px;   /* 上下左右余白 */
+        height: auto;         /* 高さは自動で調整 */
+        line-height: 1.4;     /* 文字を中央に表示 */
+        font-size: 1.05rem;   /* 少し大きめで見やすく */
+        box-sizing: border-box;
+    }
+
+    .modal-table input,
+    .info-list input {
+        width: 100%;
+        padding: 12px 14px;
+        height: auto;
+        line-height: 1.4;
+        font-size: 1.05rem;
+        box-sizing: border-box;
+    }
+    
+    /* モーダルサイズを画面に合わせる */
+    .modal-box {
+        width: 92%;
+        max-width: 480px;
+        padding: 16px 1px;
+        border-radius: 12px;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    .modal-header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 12px 16px;
+    }
+
+    .modal-header h3 {
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .close-btn {
+        font-size: 1.3rem;
+    }
+
+    /* テーブル縦積み表示 + 左右余白確保 */
+    .modal-table,
+    .modal-table tbody,
+    .modal-table tr,
+    .modal-table th,
+    .modal-table td,
+    .info-list table,
+    .info-list tbody,
+    .info-list tr,
+    .info-list th,
+    .info-list td {
+        display: block;
+        width: 100%;
+        padding: 1px 5px;  /* 左右の余白を増やして中央寄せに近づける */
+        box-sizing: border-box;
+    }
+
+    .modal-table th,
+    .info-list th {
+        font-size: 0.85rem;
+        color: #8fcfff;
+        margin-bottom: 4px;
+    }
+
+    .modal-table td,
+    .info-list td {
+        margin-bottom: 12px;
+    }
+
+    /* 入力欄も左右余白確保 */
+    .modal-table input,
+    .info-list input {
+        width: 100%;
+        height: 44px;
+        font-size: 0.9rem;
+        padding: 10px 12px; /* 内側の余白 */
+    }
+
+    /* ボタンの幅調整 + 中央寄せ */
+    .button-area {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;  /* 左右中央寄せ */
+    }
+
+    .btn {
+        width: 90%;       /* 画面幅に対して少し余白を残す */
+        max-width: 320px; /* 最大幅を制限 */
+        padding: 14px 0;
+        font-size: 1rem;
+    }
+
+    /* パスワードトグル位置調整 */
+    .password-cell .toggle-btn {
+        top: 12px;
+        right: 16px;
+        transform: none;
+        font-size: 1rem;
+    }
+
+    /* 有効期限 + CVV */
+    .expire-cvv {
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between; /* バランス良く左右配置 */
+    }
+
+    .expire-cvv input {
+        flex: 1 1 28%;
+        min-width: 70px;
+    }
+
+    .expire-cvv input:last-child {
+        flex: 1 1 32%;
+        min-width: 90px;
+    }
+
+    /* モーダル下ボタン余白調整 */
+    .modal-btn-area {
+        padding: 16px 0;
+        text-align: center;
+    }
+    
+}

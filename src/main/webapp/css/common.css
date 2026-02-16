@@ -1,0 +1,100 @@
+/* --- レイアウト共通 --- */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+}
+
+/* --- スクロールバーのカスタマイズ --- */
+
+/* Firefox用: バーの太さと色を指定 */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #444 #121212; /* つまみの色 / 背景色 */
+    /* スクロールバーがなくても領域を確保してガタつきを防ぐ */
+    scrollbar-gutter: stable;
+}
+
+/* Chrome, Edge, Safari用 */
+body::-webkit-scrollbar {
+    display: block; /* 非表示を解除 */
+    width: 8px;     /* 横スクロールバーの場合は height */
+}
+
+/* スクロールバーの背景（レール） */
+body::-webkit-scrollbar-track {
+    background: #121212; 
+}
+
+/* スクロールバー本体（つまみ） */
+body::-webkit-scrollbar-thumb {
+    background-color: #444;    /* 薄いグレー */
+    border-radius: 10px;       /* 丸角にしてモダンな印象に */
+    border: 2px solid #121212; /* 背景と同じ色の隙間を作って細く見せる */
+}
+
+/* ホバーした時に少し明るくする（操作感の向上） */
+body::-webkit-scrollbar-thumb:hover {
+    background-color: #666;
+}
+
+.main-container {
+    max-width: 1100px; /* パーセント指定より固定幅+レスポンシブが安定します */
+    width: 80%;
+    margin: 40px auto;
+}
+
+/* --- コンポーネント共通：ページタイトル --- */
+.page-title {
+    color: #ffffff; 
+    border-left: 4px solid #00d4ff; /* 基準のデザイン */
+    padding-left: 15px;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 0 !important;
+}
+
+
+
+/* --- コンポーネント共通：リンクリストのソースなど --- */
+.sub-info-container {
+    margin: -20px 0 25px 5px;
+}
+
+.sub-info-link {
+    font-size: 0.8rem;
+    color: #888;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.2s ease;
+}
+
+.sub-info-link:hover {
+    color: #00d4ff;
+    text-decoration: underline;
+}
+
+.sub-info-link::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: currentColor;
+    margin-right: 8px;
+    border-radius: 1px;
+}
+
+@media (max-width: 900px) {
+    html {
+        overscroll-behavior-y: none;
+    }
+    .main-container {
+        margin: 20px auto;
+    }
+}

@@ -1,0 +1,863 @@
+/* ===== Booking Confirm Page ===== */
+
+:root {
+  /* background */
+  --bg-main: #0b0b0b;
+  --bg-card: #101010;
+  --bg-border: #222;
+
+  /* text */
+  --text-title: #f5f7fa;
+  --text-main: #e6e6e6;
+  --text-sub:  #9aa0a6;
+  --text-muted:#7a7a7a;
+
+  /* accent */
+  --accent-main: #00e5ff;
+  --accent-danger: #ff6b6b;
+  
+}
+
+.page{
+  padding: 18px 16px 80px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.page-head{
+  margin: 10px 0 18px;
+  
+}
+.page-title{
+  color:#ffffff;
+  font-size: 40px !important;
+
+  margin: 0 0 6px;
+  font-weight: 800;
+}
+.page-sub{
+  margin: 0;
+  color: #aaa;
+  font-size: 13px;
+}
+
+.card{
+  background: #101010;
+  border: 1px solid #222;
+  border-radius: 14px;
+  margin: 14px 0;
+  overflow: hidden;
+}
+.card-head{
+  padding: 14px 16px;
+  border-bottom: 1px solid #1e1e1e;
+}
+.card-title{
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: #eaeaea;
+}
+.card-sub{
+  margin: 6px 0 0;
+  color: #9a9a9a;
+  font-size: 12px;
+}
+.card-body{
+  padding: 14px 16px;
+}
+
+/* seat chips */
+.seat-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.seat-chip{
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid #2a2a2a;
+  background: #0b0b0b;
+  color: #ddd;
+  font-size: 13px;
+}
+
+/* tickets */
+.ticket-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+@media (max-width: 760px){
+  .ticket-grid{ grid-template-columns: 1fr; }
+}
+.ticket{
+  border: 1px solid #222;
+  border-radius: 12px;
+  background: #0b0b0b;
+  overflow: hidden;
+}
+.ticket-head{
+  padding: 12px 12px 10px;
+  border-bottom: 1px solid #1e1e1e;
+}
+.ticket-title{
+  font-weight: 800;
+  color: #f0f0f0;
+}
+.ticket-seat{
+  font-weight: 600;
+  color: #9a9a9a;
+  font-size: 12px;
+  margin-left: 6px;
+}
+.ticket-body{
+  padding: 10px 12px 12px;
+}
+
+.radio-list{
+  display: grid;
+  gap: 8px;
+}
+.radio-item{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 10px;
+  border: 1px solid #242424;
+  border-radius: 10px;
+  background: #0f0f0f;
+  cursor: pointer;
+}
+.radio-item:hover{
+  border-color: #3a3a3a;
+}
+.radio-item input{
+  transform: translateY(1px);
+}
+.radio-text{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+}
+.radio-main{
+  color: #e6e6e6;
+  font-weight: 700;
+}
+.radio-sub{
+  color: #bdbdbd;
+  font-weight: 700;
+}
+
+/* payment */
+.payment-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+@media (max-width: 760px){
+  .payment-grid{ grid-template-columns: 1fr; }
+}
+.pay-item{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 12px;
+  border: 1px solid #242424;
+  border-radius: 12px;
+  background: #0b0b0b;
+  cursor: pointer;
+}
+.pay-item:hover{
+  border-color: #3a3a3a;
+}
+
+/* actions */
+.actions{
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+.btn{
+  appearance: none;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-primary{
+  background: transparent;
+  color: #fff;
+  border-color: #2a2a2a;
+}
+.btn-ghost{
+  background: transparent;
+  color: #fff;
+  border-color: #2a2a2a;
+}
+
+.btn-ghost:hover{
+  border-color: #3a3a3a;
+}
+
+
+.btn-primary:hover,
+.btn-primary:focus-visible,
+.btn-ghost:hover,
+.btn-ghost:focus-visible{
+  background: transparent;          
+  color: var(--accent-main);
+  border-color: var(--accent-main);
+}
+
+.btn:active{
+  transform: translateY(1px);
+}
+
+
+/* ===== Booking Result ===== */
+.result-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:900;
+  letter-spacing:.5px;
+  border:1px solid #2a2a2a;
+  background:#0b0b0b;
+  margin-bottom:14px;
+}
+.result-badge.ok{
+  color:#00e5ff;
+  border-color:#00e5ff33;
+}
+.result-badge.ng{
+  color:#ff6b6b;
+  border-color:#ff6b6b33;
+}
+
+.kv{
+  border:1px solid #222;
+  border-radius:12px;
+  overflow:hidden;
+  margin: 10px 0 14px;
+}
+.kv-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 14px;
+  border-top:1px solid #1e1e1e;
+  background:#0b0b0b;
+}
+.kv-row:first-child{ border-top:none; }
+.kv-key{
+  color:#9a9a9a;
+  font-weight:700;
+}
+.kv-val{
+  color:#eaeaea;
+  font-weight:900;
+}
+.kv-val.price{
+  color:#00e5ff;
+  font-size:18px;
+}
+
+.section-title{
+  margin: 14px 0 10px;
+  font-size:14px;
+  color:#ddd;
+  font-weight:800;
+}
+
+.error-box{
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid #ff6b6b33;
+  background:#150b0b;
+  color:#ffb3b3;
+  font-weight:700;
+}
+
+/* ===== Modal (NEOcinema unified) ===== */
+.modal.hidden { display: none; }
+
+.modal{
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.modal-overlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.72);
+}
+
+.modal-content{
+  position: relative;
+  width: min(520px, 100%);
+  background: #0b0b0b;
+  color: #fff;
+  border: 1px solid #222;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 18px 60px rgba(0,0,0,.55);
+}
+
+.modal-content h3{
+  margin: 0 0 14px;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+/* 가격 버튼 */
+.price-option{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px 14px;
+  margin-top: 10px;
+
+  border-radius: 12px;
+  border: 1px solid #242424;
+  background: #101010;
+
+  color: #eaeaea;
+  font-weight: 800;
+  cursor: pointer;
+
+  transition: border-color .15s ease,
+              background .15s ease,
+              transform .05s ease;
+}
+
+.price-option:hover{
+  border-color: #00e5ff;
+  background: #0f171a;
+  color: #fff;
+}
+
+.price-option:active{
+  transform: translateY(1px);
+}
+
+/* 캔슬 버튼 */
+.modal-close{
+  margin-top: 14px;
+  width: 100%;
+  padding: 11px;
+
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  background: transparent;
+
+  color: #ddd;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.modal-close:hover{
+  border-color: #00e5ff;
+  color: #fff;
+}
+
+
+
+/* ===== Theme override (tone down whites) ===== */
+
+.page {
+  color: var(--text-main);
+}
+
+.page-title {
+  color: var(--text-title); /* #ffffff -> 톤다운 */
+}
+
+.page-sub {
+  color: var(--text-sub);
+}
+
+.card {
+  background: var(--bg-card);
+  border-color: var(--bg-border);
+}
+
+.card-title {
+  color: var(--text-main);
+}
+
+.card-sub {
+  color: var(--text-sub);
+}
+
+/* seat chip */
+.seat-chip {
+  background: var(--bg-main);
+  border-color: #2a2a2a;
+  color: var(--text-main);
+}
+
+/* ticket */
+.ticket {
+  background: var(--bg-main);
+  border-color: var(--bg-border);
+}
+.ticket-title {
+  color: var(--text-main);
+}
+.ticket-seat {
+  color: var(--text-sub);
+}
+
+/* radio */
+.radio-main { color: var(--text-main); }
+.radio-sub  { color: var(--text-sub);  }
+
+/* kv table */
+.kv-row { background: var(--bg-main); }
+.kv-key { color: var(--text-sub); }
+.kv-val { color: var(--text-main); }
+
+.kv-val.price,
+.total-price,
+.result-badge.ok {
+  color: var(--accent-main);
+}
+
+/* section title */
+.section-title { color: var(--text-main); }
+
+/* buttons */
+.btn-primary {
+  background: #101010;
+  color: var(--text-main);
+}
+.btn-ghost {
+  border-color: #2a2a2a;
+  color: var(--text-main);
+}
+
+
+/* 上映情報 dl */
+.info-dl{
+  margin: 0;
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 10px 12px;
+}
+.info-dl dt{
+  color: var(--text-sub);      /* 라벨 톤다운 */
+  font-weight: 700;
+}
+.info-dl dd{
+  margin: 0;
+  color: var(--text-main);     /* 값은 메인 텍스트 */
+  font-weight: 800;
+}
+.info-dl dt{
+  color: var(--text-sub, #9aa0a6) !important;
+  font-weight: 700;
+}
+
+.info-dl dd{
+  margin: 0;
+  color: var(--text-main, #e6e6e6) !important;
+  font-weight: 800;
+}
+
+/* ===== Actions / Buttons FIX ===== */
+.actions{
+  display:flex;
+  gap:10px;
+  justify-content:flex-end;
+  align-items:center;
+  flex-wrap:wrap;              /* 화면 좁아져도 버튼이 내려가게 */
+  margin-top:14px;
+}
+
+.actions .btn{
+  display:inline-flex;         /* 혹시 다른 CSS가 block/none 건드렸을 때 복구 */
+  visibility:visible;
+  opacity:1;
+}
+
+/* 혹시 btn-primary가 다른 파일에서 숨겨졌을 가능성 방지 */
+.actions .btn-primary{
+  display:inline-flex !important;
+}
+
+
+/* =========================
+   Card Pay Section (FIX)
+   ========================= */
+#cardPaySection .sub-title{
+  margin: 6px 0 10px;
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--text-main);
+}
+
+/* ===== Accordion ===== */
+#cardPaySection .card-acc{
+  border: 1px solid #242424;
+  border-radius: 14px;
+  background: #0b0b0b;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+#cardPaySection .card-acc-sum{
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 12px;
+  cursor: pointer;
+  font-weight: 900;
+  color: var(--text-main);
+  border-bottom: 1px solid #1e1e1e;
+}
+
+#cardPaySection details > summary::-webkit-details-marker{
+  display: none;
+}
+
+#cardPaySection .card-acc-sub{
+  color: var(--text-sub);
+  font-weight: 800;
+  font-size: 12px;
+}
+
+/* ===== Saved card list ===== */
+#cardPaySection .card-choice-list{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 12px;
+}
+
+/* 저장 카드/NEW 버튼 공통 “버튼 카드” */
+#cardPaySection .card-option{
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px 12px;
+  border: 1px solid #242424;
+  border-radius: 14px;
+  background: #101010;
+  cursor: pointer;
+  user-select: none;
+}
+
+#cardPaySection .card-option:hover{
+  border-color: #3a3a3a;
+}
+
+#cardPaySection .card-option input[type="radio"]{
+  flex: 0 0 auto;
+  margin: 0 6px 0 0;
+}
+
+#cardPaySection .card-option .brand{
+  font-weight: 900;
+  color: var(--text-main);
+}
+
+#cardPaySection .card-option .masked{
+  opacity: .9;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+/* exp는 오른쪽 */
+#cardPaySection .card-option .exp{
+  margin-left: auto;
+  color: var(--text-sub);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* 선택 강조 */
+#cardPaySection .card-option:has(input:checked){
+  border-color: var(--accent-main);
+  background: rgba(0,229,255,.06);
+  box-shadow: 0 0 0 1px rgba(0,229,255,.25) inset;
+}
+
+/* NEW 버튼만 점선 */
+#cardPaySection .card-option-new{
+  border-style: dashed;
+  background: #0b0b0b;
+}
+
+#cardPaySection .card-option-new .plus{
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #333;
+}
+
+
+#cardPaySection .new-card{
+  margin-top: 12px;
+  padding: 14px;
+  border: 1px solid #222;
+  border-radius: 14px;
+  background: #0e0e0e;
+}
+
+#cardPaySection .field-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 760px){
+  #cardPaySection .field-grid{ grid-template-columns: 1fr; }
+}
+
+#cardPaySection .field{
+  display: grid;
+  gap: 6px;
+}
+
+#cardPaySection .field span{
+  font-size: 12px;
+  opacity: .8;
+  font-weight: 800;
+  color: var(--text-sub);
+}
+
+#cardPaySection .field input,
+#cardPaySection .field select{
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #222;
+  background: #111;
+  color: #fff;
+}
+
+#cardPaySection .save-card{
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+/* ===== Brand toggle (mini) ===== */
+#cardPaySection .brand-toggle{
+  display: inline-flex;
+  gap: 8px;
+}
+
+#cardPaySection .brand-btn{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #242424;
+  background: #111;
+
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .5px;
+
+  cursor: pointer;
+  transition: all .15s ease;
+}
+
+#cardPaySection .brand-btn input{
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#cardPaySection .brand-btn:has(input:checked){
+  border-color: var(--accent-main);
+  color: var(--accent-main);
+  background: rgba(0,229,255,.08);
+}
+
+
+#cardPaySection .card-option-new{
+  width: 100%;
+}
+
+.picked-text { color: var(--text-main); font-weight: 900; margin-top: 8px; }
+#totalPrice  { color: var(--accent-main); font-weight: 900; font-size: 20px; }
+.ticket-pick { border:1px solid #2a2a2a; background:#101010; color:var(--text-main);
+              padding:10px 12px; border-radius:10px; font-weight:900; cursor:pointer; }
+.ticket-pick:hover { border-color: var(--accent-main); color: var(--accent-main); }
+
+.screening-wrap{
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+  flex-wrap:wrap;
+}
+
+@media (max-width: 768px){
+  .screening-wrap{
+    flex-direction: column;
+  }
+  .screening-wrap img{
+    width: 100% !important;
+    height: auto !important;
+    max-width: 240px; /* 원하면 100%로도 가능 */
+  }
+}
+
+
+/* 모바일 터치 UX */
+button, .btn { min-height: 44px; }
+input, select { font-size: 16px; } /* iOS 확대 방지 */
+
+/* ticket-grid, payment-grid, actions 모바일 정렬 */
+@media (max-width: 768px){
+  .ticket-grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .payment-grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .actions{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .actions .btn{
+    width: 100%;
+  }
+}
+
+
+.card-option{
+  display: flex;
+  align-items: center;   /* ✅ 라디오가 세로 가운데로 */
+  gap: 10px;             /* ✅ 라디오-텍스트 간격 */
+  padding: 10px 12px;
+  border: 1px solid #222;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.card-option input[type="radio"]{
+  margin: 0;             /* ✅ 기본 margin 때문에 위로 뜨는 거 방지 */
+  flex: 0 0 auto;
+}
+
+
+.card-option .brand{
+  font-weight: 800;
+}
+
+.card-option .masked{
+  color: #aaa;
+}
+
+.card-option .exp{
+  color: #777;
+  margin-left: auto;     /* ✅ 만료일을 오른쪽 끝으로 */
+  white-space: nowrap;
+}
+
+
+/* label 자체를 flex로 만들어 체크박스와 글자를 붙임 */
+.save-card-label{
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  width: auto;               /* ✅ 라벨이 화면 전체를 먹지 않게 */
+  white-space: nowrap;       /* ✅ 2줄로 떨어지면 보기 안좋음 */
+}
+
+/* 체크박스 기본 margin 때문에 떠보이는 거 방지 + 크기 통일 */
+.save-card-label input[type="checkbox"]{
+  margin: 0 !important;
+  width: 18px;
+  height: 18px;
+}
+
+/* ===== Save card checkbox alignment FIX ===== */
+#cardPaySection .save-card-field{
+  display: flex;
+  justify-content: flex-end; /* 오른쪽 정렬 */
+  align-items: center;
+}
+
+#cardPaySection .save-card-label{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  width: auto;
+  white-space: nowrap;
+}
+
+#cardPaySection .save-card-label input[type="checkbox"]{
+  margin: 0;
+  width: 18px;
+  height: 18px;
+}
+
+
+/* ✅ Save card row: one line, checkbox + text 붙이기 */
+#cardPaySection .save-card-field{
+  grid-column: 1 / -1;        /* field-grid 2열을 전체로 */
+  display: flex !important;   /* field의 display:grid 덮어씀 */
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#cardPaySection .save-card-label{
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+#cardPaySection .save-card-label input[type="checkbox"]{
+  margin: 0 !important;
+  width: 18px;
+  height: 18px;
+}
+

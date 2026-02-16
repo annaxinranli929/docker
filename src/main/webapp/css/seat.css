@@ -1,0 +1,396 @@
+
+
+.page-title{
+  text-align:center;
+  margin: 18px 0 8px;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 16px 100px;
+  text-align: left;
+}
+
+/* poster */
+.purchase-poster{
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background: #111;
+  border-radius: 12px;
+  border: 1px solid #222;
+  display: block;
+  margin-bottom: 12px;
+}
+.purchase-poster.placeholder{
+  height: 160px;
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+/* legend */
+.legend{
+  background:#101010;
+  border:1px solid #222;
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin: 10px 0 18px;
+}
+.legend h3{
+  margin:0 0 12px;
+  font-size: 16px;
+  color:#ddd;
+}
+.legend-items{
+  display:flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+.legend-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#bbb;
+  font-size: 13px;
+}
+.legend-box{
+  width: 16px; height: 16px;
+  border-radius: 3px;
+  border: 1px solid #444;
+}
+.legend-empty{ background:#fff; border-color:#bbb; }
+.legend-selected{ background:#00d4ff; border-color:#00d4ff; }
+.legend-sold{ background:#222; border-color:#222; }
+
+/* layout */
+.content{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 18px;
+  align-items: start;
+}
+
+/* seat area wrap */
+.seat-area-wrap{
+  text-align:center;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding-bottom: 8px;
+}
+
+.screen-container{
+  text-align:center;
+  margin-bottom: 25px;
+}
+.screen{
+  width: 40%;
+  height: 3px;
+  background: #666;
+  margin: 0 auto 5px;
+  border-radius: 50% / 100% 100% 0 0;
+}
+.screen-text{
+  color: #555;
+  font-size: 0.6rem;
+  letter-spacing: 5px;
+}
+
+/* seat area */
+#seat-area{
+  display: inline-block;
+  white-space: nowrap;
+  background: #181818;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #222;
+}
+
+.seat-row{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 4px;
+  width: fit-content;
+}
+
+.aisle-top{ margin-top: 25px; }
+.header-row{ margin-bottom: 8px; border-bottom: 1px solid #222; padding-bottom: 5px; }
+
+.row-label{
+  width: 25px;
+  color: #444;
+  font-size: 0.7rem;
+  font-weight: bold;
+  flex-shrink: 0;
+  text-align: left;
+}
+.col-label{
+  width: 32px;
+  margin: 0 2px;
+  color: #444;
+  font-size: 0.6rem;
+  flex-shrink: 0;
+}
+.seat-btn, .seat-spacer{
+  width: 32px;
+  height: 34px;
+  margin: 0 2px;
+  flex-shrink: 0;
+}
+
+.seat-btn{
+  border: none;
+  border-radius: 3px;
+  font-size: 0.6rem;
+  line-height: 1.1;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.seat-free{ background-color: #333; color: #aaa; }
+.seat-free:hover{ background-color: #444; color: #fff; }
+
+.seat-reserved{
+  background-color: #222 !important;
+  color: #333 !important;
+  cursor: not-allowed !important;
+}
+.seat-reserved::after{ content: "×"; font-size: 0.8rem; }
+
+.select{
+  background-color: #00d4ff !important;
+  color: #000 !important;
+  font-weight: bold;
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+
+/* right purchase */
+.purchase{
+  position: sticky;
+  top: 12px;
+  background:#101010;
+  border:1px solid #222;
+  border-radius: 10px;
+  padding: 16px 16px;
+}
+.purchase h3{
+  margin:0 0 12px;
+  font-size: 16px;
+  color:#ddd;
+}
+.purchase dl{
+  margin:0;
+  display:grid;
+  grid-template-columns: 80px 1fr;
+  row-gap: 10px;
+  column-gap: 12px;
+  font-size: 13px;
+}
+.purchase dt{ color:#888; }
+.purchase dd{ margin:0; color:#fff; font-weight:700; }
+
+/* bottom bar */
+.bottom-bar{
+  position: fixed;
+  left:0; right:0; bottom:0;
+  height: 76px;
+  background: rgba(10,10,10,0.98);
+  border-top: 1px solid #222;
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  padding: 0 16px;
+  z-index: 9999;
+}
+.selected-wrap{
+  flex: 1;
+  display:flex;
+  gap: 8px;
+  overflow-x:auto;
+  padding: 6px 0;
+}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height: 36px;
+  min-width: 58px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background:#1c1c1c;
+  border:1px solid #2a2a2a;
+  color:#fff;
+  font-weight: 800;
+  cursor:pointer;
+  user-select:none;
+}
+.pill:hover{ border-color:#00d4ff; }
+
+.btn-clear{
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 10px;
+  border: 1px solid #444;
+  background:#111;
+  color:#fff;
+  font-weight: 800;
+  cursor:pointer;
+}
+.btn-clear:hover{ border-color:#00d4ff; }
+
+#submit-button{
+  background-color: #111;
+  color: #fff;
+  border-radius: 10px;
+  border: 1px solid #444;
+  padding: 10px 60px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  
+}
+
+#submit-button:hover{
+  background: transparent;        
+  color: #00d4ff;                 
+  border: 1px solid #00d4ff;      
+}
+
+#submit-button:active{
+  transform: translateY(1px);
+}
+
+#submit-button:focus-visible{
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
+}
+
+#submit-button{
+  transition: background .15s ease, color .15s ease, border-color .15s ease, transform .05s ease;
+}
+
+
+
+@media (max-width: 900px){
+  .content{ grid-template-columns: 1fr; }
+  .purchase{ position: static; margin-top: 12px; }
+}
+
+
+.page-actions{
+  display: flex;
+  justify-content: flex-end;
+  margin: 6px 0 12px;
+}
+
+.page-actions .btn-back{
+  height: 40px;              
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  background: transparent;
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-actions .btn-back:hover{
+  border-color:#00d4ff;
+  color:#00d4ff;
+}
+
+/* ===========================
+   Mobile Responsive for seat.jsp
+   =========================== */
+
+* { box-sizing: border-box; }
+img { max-width: 100%; height: auto; }
+
+/* 데스크탑: content(좌석) + purchase(오른쪽) 2열일 가능성이 높음
+   모바일: 1열로 스택 */
+@media (max-width: 900px){
+  .content{
+    display: block;      /* 혹시 flex/grid면 1열로 */
+  }
+
+  .purchase{
+    margin-top: 12px;
+    position: static;    /* sticky/고정 있으면 해제 */
+    width: 100%;
+  }
+
+  .purchase-poster{
+    max-width: 160px;
+    border-radius: 12px;
+  }
+}
+
+/* 좌석영역: 모바일에서 가장 중요
+   → 좌석 전체는 "가로 스크롤 가능한 박스"로 만들기 */
+@media (max-width: 900px){
+  .seat-area-wrap{
+    width: 100%;
+  }
+
+  #seat-area{
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;     /* 스크롤바 공간 */
+  }
+
+  /* seat-row들이 줄바꿈되면 좌석이 망가짐 → 한 줄 유지 */
+  #seat-area .seat-row{
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+
+  /* 좌석 버튼 터치 영역 확보 + 너무 커서 넘치면 살짝 축소 */
+  #seat-area .seat-btn{
+    min-width: 34px;
+    min-height: 34px;
+    font-size: 11px;
+  }
+
+  #seat-area .col-label,
+  #seat-area .row-label{
+    font-size: 11px;
+  }
+}
+
+/* 하단 고정 바: 모바일에서 버튼/텍스트가 겹치기 쉬움 */
+@media (max-width: 900px){
+  .bottom-bar{
+    padding: 10px 10px;
+    gap: 8px;
+  }
+
+  .bottom-bar #selected-wrap{
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    flex: 1;
+  }
+
+  .bottom-bar button{
+    min-height: 44px;   /* 손가락 터치 */
+  }
+
+  .pill{
+    display: inline-flex;
+    margin-right: 6px;
+  }
+}

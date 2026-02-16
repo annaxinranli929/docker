@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>映画予約管理システム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <span class="date-display">26/01/23</span>
+            <button class="btn-secondary">今日</button>
+        </div>
+        <h1>映画管理トップ</h1>
+        <div class="header-right">
+            <button class="btn-primary">上映登録</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <aside class="movie-sidebar">
+            <h3>映画DB</h3>
+            <div id="external-events">
+                <div class="movie-item" draggable="true">Movie 1</div>
+                <div class="movie-item" draggable="true">Movie 2</div>
+                <div class="movie-item" draggable="true">Movie 3</div>
+                <div class="movie-item" draggable="true">Movie 4</div>
+                <div class="movie-item" draggable="true">Movie 5</div>
+            </div>
+        </aside>
+
+        <section class="timetable-container">
+            <div class="screen-header">
+                <div class="time-column-label"></div>
+                <div class="screen-name">スクリーン 1</div>
+                <div class="screen-name">スクリーン 2</div>
+                <div class="screen-name">スクリーン 3</div>
+            </div>
+
+            <div class="grid-wrapper">
+                <div class="time-axis" id="time-axis">
+                    </div>
+
+                <div class="grid-columns" id="grid-columns">
+                    <div class="screen-column" data-screen="1">
+                        <div class="movie-card" style="top: 30px; height: 120px; background: #fff3cd;">
+                            <div class="card-content">
+                                <span class="movie-title">Movie A</span>
+                                <span class="time-range">9:15 - 10:15</span>
+                            </div>
+                            <span class="delete-x" onclick="this.parentElement.remove()">×</span>
+                        </div>
+                    </div>
+                    <div class="screen-column" data-screen="2"></div>
+                    <div class="screen-column" data-screen="3"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

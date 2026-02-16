@@ -1,0 +1,144 @@
+:root {
+    --hour-height: 120px;     /* 1時間 = 120px */
+    --quarter-height: 30px;   /* 15分 = 30px */
+    --sidebar-width: 200px;
+    --time-axis-width: 60px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+header {
+    background: #2c3e50;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* サイドバー */
+.movie-sidebar {
+    width: var(--sidebar-width);
+    background: #ecf0f1;
+    border-right: 1px solid #bdc3c7;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.movie-item {
+    background: white;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    cursor: grab;
+    transition: background 0.2s;
+}
+
+.movie-item:hover { background: #fdfdfd; }
+
+/* タイムテーブル本体 */
+.timetable-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    background: white;
+}
+
+.screen-header {
+    display: flex;
+    background: #f8f9fa;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 2px solid #ddd;
+}
+
+.time-column-label { width: var(--time-axis-width); flex-shrink: 0; }
+.screen-name {
+    flex: 1;
+    min-width: 180px;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    border-left: 1px solid #ddd;
+}
+
+.grid-wrapper {
+    display: flex;
+    position: relative;
+    width: fit-content;
+    min-width: 100%;
+}
+
+/* 時間軸 */
+.time-axis {
+    width: var(--time-axis-width);
+    background: #fdfdfd;
+    border-right: 1px solid #ddd;
+    flex-shrink: 0;
+}
+
+.time-mark {
+    height: var(--hour-height);
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    font-size: 12px;
+    padding-top: 5px;
+    color: #7f8c8d;
+    box-sizing: border-box;
+}
+
+/* 格子 */
+.grid-columns {
+    display: flex;
+    flex: 1;
+}
+
+.screen-column {
+    flex: 1;
+    min-width: 180px;
+    position: relative;
+    border-left: 1px solid #ddd;
+    /* 15分刻みのドット線と、1時間刻みの実線を描画 */
+    background-image: 
+        linear-gradient(to bottom, #f0f0f0 1px, transparent 1px),
+        linear-gradient(to bottom, #e0e0e0 1px, transparent 1px);
+    background-size: 100% var(--quarter-height), 100% var(--hour-height);
+}
+
+/* 映画カード */
+.movie-card {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    border-radius: 4px;
+    padding: 8px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid #f39c12;
+}
+
+.card-content { display: flex; flex-direction: column; }
+.movie-title { font-weight: bold; font-size: 14px; }
+.time-range { font-size: 11px; color: #7f8c8d; }
+.delete-x { cursor: pointer; color: #e74c3c; font-weight: bold; }
+
+.btn-primary { background: #27ae60; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; }
+.btn-secondary { background: white; border: 1px solid #ccc; padding: 5px 10px; border-radius: 4px; cursor: pointer; }

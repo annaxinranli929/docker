@@ -1,0 +1,101 @@
+/* ニュースカード本体 */
+.news-card {
+    display: flex;
+    align-items: stretch;
+    background: #1e1e1e;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #333;
+    position: relative;
+    
+    /* 核心ポイント1: 高さを固定（必要に応じて調整してください） */
+    height: 200px; 
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border-color: #00d4ff;
+}
+
+/* カード全体をリンクにするオーバーレイ */
+.news-card-overlay-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    text-indent: -9999px;
+}
+
+/* 画像エリア */
+.news-image-wrapper {
+    flex: 0 0 300px; /* 横幅固定 */
+    height: 100%;    /* 親(news-card)の高さに合わせる */
+    position: relative;
+    background: #2a2a2a;
+    overflow: hidden;
+}
+
+.news-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 画像の比率を維持しつつ枠を埋める */
+    transition: transform 0.3s ease;
+}
+
+/* テキストコンテンツエリア */
+.news-content {
+    padding: 20px;
+    flex: 1;         /* 残りの幅をすべて使う */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 上詰め */
+    overflow: hidden; /* はみ出し防止 */
+}
+
+.news-date {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 6px;
+}
+
+.news-item-title {
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #00d4ff;
+    margin-bottom: 8px;
+    line-height: 1.3;
+    /* 核心ポイント2: タイトルが2行を超えたら「...」にする */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.news-description {
+    font-size: 0.9rem;
+    color: #ccc;
+    line-height: 1.5;
+    margin: 0;
+    /* 核心ポイント3: 本文が3行を超えたら「...」にする */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
+/* モバイル対応：縦並びにする場合は高さを自動に戻す */
+@media (max-width: 768px) {
+    .news-card { 
+        flex-direction: column; 
+        height: auto; /* モバイルでは高さ固定を解除 */
+    }
+    .news-image-wrapper { 
+        flex: 0 0 180px; 
+        width: 100%;
+    }
+}
