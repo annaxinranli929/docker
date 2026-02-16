@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionManager {
-    private static final String DATABASE_URL = "jdbc:mysql://cinema-database.ckrhjjjthc7u.us-east-1.rds.amazonaws.com:3306/cinema";
+    private static final String DATABASE_URL = "jdbc:mysql://database-1.cg5kovhtozew.us-east-1.rds.amazonaws.com:3306/cinema";
     private static final String USERNAME = "NEOcinema";
     private static final String PASSWORD = "destroy";
     
